@@ -6,6 +6,7 @@ $(document).ready(function() {
 	let myDomString = "";
 	myDomString += `<div class="row">`
 	for (let i = 0; i < myArrayToPrint.length; i++) {
+		if (myArrayToPrint[i].name !== undefined && myArrayToPrint[i].team_id !== undefined) {
 		myDomString += `<div class="heroCard col-md-3">`;
 		myDomString += `<header><h1>${myArrayToPrint[i].name}</h1></header>`;
 		myDomString += `<section><img src="${myArrayToPrint[i].image}">`;
@@ -19,6 +20,8 @@ $(document).ready(function() {
 			myDomString += `<div class="row">`			
 		}
 	}
+
+}
 
 }
 
