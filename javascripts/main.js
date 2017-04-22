@@ -2,6 +2,26 @@ $(document).ready(function() {
 
 	const marvelArray = [];
 
+	const makeDom = (myArrayToPrint) => {
+	let myDomString = "";
+	myDomString += `<div class="row">`
+	for (let i = 0; i < myArrayToPrint.length; i++) {
+		myDomString += `<div class="heroCard col-md-3">`;
+		myDomString += `<header><h1>${myArrayToPrint[i].name}</h1></header>`;
+		myDomString += `<section><img src="${myArrayToPrint[i].image}">`;
+		myDomString += `<p class="bio">${myArrayToPrint[i].description}</p></section>`;
+		// myDomString += `<footer><h4>${myArrayToPrint[i].info}</h4></footer>`;
+		myDomString += `</div>`
+	if (((i + 1) % 4) === 0) {
+		myDomString += `</div>`
+		$('#heroes').append(myDomString);
+			myDomString = "";
+			myDomString += `<div class="row">`			
+		}
+	}
+
+}
+
 	const charactersJson = () => {
 		return new Promise((resolve, reject) => {
 			$.ajax("./db/characters.json")
@@ -53,5 +73,6 @@ $(document).ready(function() {
 				});
 			});
 			console.log(marvelArray);
+			makeDom(marvelArray);
 		});
 });
